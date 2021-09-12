@@ -1,7 +1,8 @@
 class Circle {
     constructor() {
-        this.x = 220
-        this.y = 150
+        this.score=0
+        this.x = 260
+        this.y = 430
         this.color = 'red'
         this.radius = 10
         let a=Math.floor(Math.random()*2)
@@ -37,7 +38,7 @@ class Circle {
         this.y+=5
     }
     move(){
-        if (this.x+this.radius===620){
+        if (this.x+this.radius===650){
             if ( this.flagMove==='topRight') {
                 this.flagMove = "topLeft"
             }else{

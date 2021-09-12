@@ -1,17 +1,18 @@
 class Brick {
-    constructor(x,y) {
-        this.x=x
-        this.y=y
-        this.status=true
-        this.width=50
-        this.height=10
+    constructor() {
+        this.status = true
+        this.width = 50
+        this.height = 10
+        this.ctx=document.getElementById('MyCanvas').getContext('2d')
     }
-    draw(ctx){
-        if(this.status){
-            ctx.beginPath()
-            ctx.rect(this.x, this.y, this.width, this.height)
-            ctx.stroke()
-            ctx.closePath()
-        }
+
+    draw(x, y) {
+        this.ctx.beginPath()
+        this.ctx.fillStyle = 'white'
+        this.ctx.rect(x, y, this.width, this.height)
+        // this.x+=60
+        this.ctx.fill()
+        this.ctx.closePath()
+        // this.x+=50
     }
 }

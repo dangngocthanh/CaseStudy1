@@ -18,7 +18,9 @@ class Rectangular {
 
     draw(ctx) {
         ctx.beginPath()
+        ctx.fillStyle='white'
         ctx.rect(this.x, this.y, this.width, this.height)
+        ctx.fill()
         ctx.stroke()
         ctx.closePath()
     }
