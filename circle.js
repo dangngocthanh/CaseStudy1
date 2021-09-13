@@ -1,10 +1,10 @@
 class Circle {
     constructor() {
-        this.score=0
         this.x = 260
         this.y = 430
         this.color = 'red'
         this.radius = 10
+        this.speed=5
         let a=Math.floor(Math.random()*2)
         if (a===0){
             this.flagMove='topRight'
@@ -22,37 +22,37 @@ class Circle {
         ctx.closePath()
     }
     moveTopRight(){
-        this.x+=5
-        this.y-=5
+        this.x+=this.speed
+        this.y-=this.speed
     }
     moveTopLeft(){
-        this.x-=5
-        this.y-=5
+        this.x-=this.speed
+        this.y-=this.speed
     }
     moveDownRight(){
-        this.x+=5
-        this.y+=5
+        this.x+=this.speed
+        this.y+=this.speed
     }
     moveDownLeft(){
-        this.x-=5
-        this.y+=5
+        this.x-=this.speed
+        this.y+=this.speed
     }
     move(){
-        if (this.x+this.radius===650){
+        if (this.x+this.radius>=650){
             if ( this.flagMove==='topRight') {
                 this.flagMove = "topLeft"
             }else{
                 this.flagMove = "downLeft"
             }
         }
-        if (this.x-this.radius===0){
+        if (this.x-this.radius<=0){
             if (this.flagMove==='topLeft'){
                 this.flagMove='topRight'
             }else{
                 this.flagMove = "downRight"
             }
         }
-        if (this.y-this.radius===0){
+        if (this.y-this.radius<=0){
             if (this.flagMove==='topLeft'){
                 this.flagMove='downLeft'
             }else{
