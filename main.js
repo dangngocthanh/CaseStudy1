@@ -3,24 +3,21 @@ let rect = new Rectangular()
 let circ = new Circle()
 let brick = new Brick()
 let brickArr = [[]]
-let a=10
-let b=10
+let lever=1
 let score=0
-rect.draw(ctx)
-circ.draw(ctx)
-for (let i = 0; i < 10; i++) {
-    brickArr[i] = []
-    for (let j = 0; j < 10; j++) {
-        let d = Math.floor(Math.random() * 30)
-        if (d <= 4) {
-            brickArr[i][j] = false
-        } else {
-            brickArr[i][j] = true
+function constructo() {
+    for (let i = 0; i < 10; i++) {
+        brickArr[i] = []
+        for (let j = 0; j < 10; j++) {
+            let d = Math.floor(Math.random() * 30)
+            if (d <= 4) {
+                brickArr[i][j] = false
+            } else {
+                brickArr[i][j] = true
+            }
         }
     }
 }
-console.log(brickArr)
-draw(brickArr)
 function background() {
     ctx.beginPath()
     ctx.fillStyle = 'Black'
@@ -33,8 +30,11 @@ function drawScore(){
     ctx.font = '30px serif '
     ctx.fillStyle='black'
     let scr=""+score+""
+    let lv=""+lever+""
     ctx.fillText('Score:', 670, 100)
+    ctx.fillText('Lever:', 670, 150)
     ctx.fillText(scr,750,100)
+    ctx.fillText(lv,750,150)
     ctx.fill()
     ctx.closePath()
 }
@@ -52,6 +52,7 @@ function clear() {
     ctx.clearRect(0, 0, 850, 500)
 }
 function moveBall() {
+
     if (circ.y < 500) {
         clear();
         background()
@@ -82,10 +83,20 @@ function moveBall() {
     }
     if (count > 0) {
         window.requestAnimationFrame(moveBall)
-    } else {
+    }  else if (lever===6) {
         win()
     }
-
+    else if (circ.y < 500) {
+        restart()
+        lever++
+    }
+}
+function start(){
+    constructo()
+    moveBall()
+}
+function restart(){
+    start()
 }
 
-moveBall()
+

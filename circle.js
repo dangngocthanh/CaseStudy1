@@ -3,7 +3,7 @@ class Circle {
         this.x = 260
         this.y = 430
         this.color = 'red'
-        this.radius = 10
+        this.radius = 5
         this.speed=5
         let a=Math.floor(Math.random()*2)
         if (a===0){
